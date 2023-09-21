@@ -2,6 +2,7 @@ import csv
 
 compromised_users = []
 
+# Opens file, extracts usernames into list
 with open("passwords.csv") as password_file:
     password_csv = csv.DictReader(password_file)
     password_row = []
@@ -9,16 +10,19 @@ with open("passwords.csv") as password_file:
         compromised_users.append(password_row["Username"])
 # print(compromised_users)
 
+# Creates a file, writes list to file
 with open("compromised_users.txt", "w") as compromised_user_file:
     for user in compromised_users:
         compromised_user_file.write(user)
 
 import json
 
+# Creates a file, writes new dictionary to file
 with open("boss_message.json", "w") as boss_message:
     boss_message_dict = {"recipient": "The Boss", "message": "Mission Success"}
     json.dump(boss_message_dict, boss_message)
-    
+
+# Creates a file, writes message to file 
 with open("new_passwords.csv", "w") as new_passwords_obj:
     slash_null_sig = """
  _  _     ___   __  ____             
